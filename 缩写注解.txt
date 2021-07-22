@@ -1,0 +1,12 @@
+
+函数命名缩写及其含义
+前缀
+Ju  Judge        判断
+Rd  Read         读取
+Rm  Remove       移除
+Cf  Confirm      确认
+Cg  Change       改变
+
+变量命名缩写及其含义
+前缀
+co  control      控制

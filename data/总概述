@@ -1,0 +1,8 @@
+data文件夹内
+有以下子文件夹:
+DataBase                   存放着数据库中的数据  包括各种词典
+record                     数据库的变更记录
+target                     待读取的新数据
+
+有以下程序：
+BasicDataIntro.exe          读取target文件夹中的新数据，并更改数据库记录

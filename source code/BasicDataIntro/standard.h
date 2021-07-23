@@ -10,14 +10,14 @@
 #include <map>
 #include <sstream>
 #include <conio.h>
+#include <ctime>
 
 using std::map;
 using std::ios;
 using std::cout;
 using std::cin;
 using std::endl;
-using std::ifstream;
-using std::ofstream;
+using std::fstream;
 using std::vector;
 using std::string;
 using std::stringstream;

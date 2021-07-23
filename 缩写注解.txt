@@ -8,5 +8,18 @@ Cf  Confirm      确认
 Cg  Change       改变
 
 变量命名缩写及其含义
-前缀
-co  control      控制
+属性前缀
+co      control        控制
+temp    temporary      临时
+att     attribute      属性(通常指文件属性)
+mk      mkdir          cmd命令 创建文件夹
+del     del            cmd命令删除文件
+
+类型前缀
+M                 map 类型
+N                  整型
+V                vector类型
+B                 bool类型
+
+后缀
+L      location       位置

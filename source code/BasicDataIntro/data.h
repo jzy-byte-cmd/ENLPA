@@ -2,8 +2,8 @@
 
 
 /*
-CBasicDataIntro类: RdNew()->JuAdd()--AskAdd()->CfIntro()--RmAdd()->CgRecord()
-                                   --exit    
+CBasicDataIntro类: RdNew()->JuAdd()--AskAdd()->CfIntro()--RmAdd()--CgRecord()
+                                   --exit               --exit   --exit
 */
 class CBasicDataIntro
 {
@@ -17,8 +17,8 @@ public:
     void AskAdd();
     //询问哪些数据需要被引入(是否需要被引入)
 
-    void RmAdd();
-    //撤销特定序列号的数据引入
+    void RmAdd(string reset_command, string location_write,int attN_target,int attN_target_L);
+    //撤销数据引入
 
     void CfIntro();
     //确认数据引入,并引入
@@ -28,15 +28,18 @@ public:
 
 
 private:
-    int m_counter=0;
+    int mN_counter=0;
     //读取list.txt的次数(新增的文件数)
     
-    vector<string> m_context;
+    vector<string> mV_context;
     //储存当前target目录下所有文件名
     
-    map<int,string> m_index;
+    map<int,string> mM_index;
 
-    vector<string> m_target;
+    vector<string> mV_target;
     //将要导入数据库的文件
+
+    vector<string> mV_changed;
+    //数据库中有更改的文件
 
 };

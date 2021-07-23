@@ -7,5 +7,6 @@ int main()
     test.RdNew();
     test.JuAdd();
     test.CfIntro();
+    test.CgRecord();
     return 0;
 }

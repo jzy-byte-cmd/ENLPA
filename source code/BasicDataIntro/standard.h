@@ -21,3 +21,4 @@ using std::fstream;
 using std::vector;
 using std::string;
 using std::stringstream;
+using std::find;

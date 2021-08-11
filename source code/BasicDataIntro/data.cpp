@@ -201,21 +201,35 @@ void CBasicDataIntro::CfIntro()
     string cmd_command="copy "+temp_location_write+" "+location_backup;//备份即将更改的数据库文件
     system(cmd_command.c_str());
     system("pause");
-    file_write.open(temp_location_write,ios::out|ios::ate);
+    file_write.open(temp_location_write,ios::out|ios::app);
     mV_changed.push_back(temp_location_write);
+    bool valid=false;
+    int code=0;
     for(int k=0;k<mV_target.size();k++)//注解1 的实现
     {
         temp_location_read=location_read+mV_target[k];
         file_read.open(temp_location_read,ios::in);
-        cout<<temp_location_read<<endl;
-        cout<<temp_location_write<<endl;
+        cout<<"读取位置:"<<endl<<temp_location_read<<endl;
+        cout<<"写入位置"<<endl<<temp_location_write<<endl;
         while(file_read.peek()!=EOF)
         {
             getline(file_read,target_context);
+            valid=this->CfValid(target_context,location_write,code);
+            code=1;
+            if(valid==true)//如果新添的单词在数据库中没有,那么将此单词添加入数据库
+            {
             file_write<<target_context<<endl;
+            str_introduced.push_back(target_context);
+            valid=false;
             target_context.clear();
             attN_target_L++;
-            if(attN_target_L==201)
+            }
+            else//如果新单词和数据库中的单词重复,则抛弃此单词
+            {
+                target_context.clear();
+                valid=false;
+            }
+            if(attN_target_L==2001)//一个txt文件的最大行数
             {
                 attN_target++;
                 converter<<attN_target;
@@ -365,8 +379,10 @@ void CBasicDataIntro::CgRecord()
     converter.clear();
     for(int k=0;k<mV_target.size();k++)//将引入的数据做备份到 \record\Introduced
     {
-        string move="copy "+location+"target\\"+mV_target[k]+" "+location+"record\\Introduced\\";
+        string move="copy \""+location+"target\\"+mV_target[k]+"\" \""+location+"record\\Introduced\\\"";
         system(move.c_str());
+        //cout<<"probable error"<<endl;  debug
+        //system("pause");
     }
     string del_target="rd "+location+"target /q /s";
     string mk_target="mkdir "+location+"target";
@@ -397,4 +413,69 @@ void CBasicDataIntro::CgRecord()
     file.open(location_record_index,ios::out|ios::trunc);
     file<<N_index<<endl;
     file.close();
+}
+
+bool CBasicDataIntro::CfValid(const string str,string location,const int code)
+{
+    if (code == 0) //如果传入0  则表明需要收集数据库内已有的单词
+    {
+        vector<string> str_file; //前者为数据库中已有的全部单词,后者为数据库中单词分区的文件名集合
+        fstream file_read;
+        string cmd_command = "dir " + location + " " + "/b /a-d " + ">" + location + "current.txt";
+        system(cmd_command.c_str());
+        string location_current = location + "current.txt";
+        string str_deliver, read_location;
+        file_read.open(location_current, ios::in);
+        while (file_read.peek() != EOF) //读取数据库内所有单词分区的文件名
+        {
+            getline(file_read, str_deliver);
+            str_file.push_back(str_deliver);
+            str_deliver.clear();
+        }
+        file_read.close();
+        cmd_command="del "+location+"current.txt";
+        system(cmd_command.c_str());
+        vector<string>::iterator it=find(str_file.begin(),str_file.end(),"last_location.txt");
+        str_file.erase(it);
+        it=find(str_file.begin(),str_file.end(),"current.txt");
+        str_file.erase(it);
+        for (int k = 0; k < str_file.size(); k++) //读取数据库内所有单词
+        {
+            cout<<str_file[k]<<endl;//debug 打印数据库内所有数据文件(单词分区)名称
+            read_location = location + str_file[k];
+            file_read.open(read_location, ios::in);
+            while (file_read.peek() != EOF)
+            {
+                getline(file_read, str_deliver);
+                str_stored.push_back(str_deliver);
+                str_deliver.clear();
+            }
+            file_read.close();
+        }
+        /*
+        for(int k=0;k<str_file.size();k++)//打印已有文件名
+        {
+            cout<<k<<endl;
+            cout<<str_file[k]<<endl;
+            system("pause");
+        }
+        for(int k=0;k<str_stored.size();k++)//debug  打印已有的单词
+        {
+            cout<<"owned:"<<endl<<str_stored[k]<<endl;
+        }
+        */
+    }
+    cout<<"寻找单词:"<<endl<<str<<endl;
+    if (find(str_stored.begin(), str_stored.end(), str) != str_stored.end()//如果发现数据库中已经存在新添的单词
+    ||
+    find(str_introduced.begin(),str_introduced.end(),str)!=str_introduced.end()) //如果发现本次引入中存在重复引入单词
+    {
+        cout<<"false"<<endl;
+        return false; //放弃添加单词指示
+    }
+    else
+    {
+        cout<<"true"<<endl;
+        return true;//添加单词指示
+    }
 }

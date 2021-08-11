@@ -8,6 +8,8 @@
         "sstream": "cpp",
         "ostream": "cpp",
         "xiosbase": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "iosfwd": "cpp",
+        "xutility": "cpp"
     }
 }

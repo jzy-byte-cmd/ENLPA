@@ -435,6 +435,7 @@ void CBasicDataIntro::CgRecord()
     file<<N_index<<endl;
     file.close();
     return;
+
 }
 
 bool CBasicDataIntro::CfValid(const string str,string location,const int code)
@@ -501,4 +502,3 @@ bool CBasicDataIntro::CfValid(const string str,string location,const int code)
         return true;//添加单词指示
     }
 }
-

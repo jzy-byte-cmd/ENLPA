@@ -1,5 +1,7 @@
+//BDI.exe
 #include "standard.h"
 #include "data.h"
+
 
 int main()
 {

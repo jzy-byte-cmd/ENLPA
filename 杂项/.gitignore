@@ -1,0 +1,54 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+#*.exe
+*.out
+*.app
+test/新建文本文档.txt
+test/hamlet-001-cast-of-characters.pdf
+test/hamlet-002-act-1-scene-1.pdf
+test/hamlet-003-act-1-scene-2.pdf
+test/hamlet-004-act-1-scene-3.pdf
+test/hamlet-005-act-1-scene-4.pdf
+test/hamlet-006-act-1-scene-5.pdf
+test/hamlet-007-act-2-scene-1.pdf
+test/hamlet-008-act-2-scene-2.pdf
+test/hamlet-009-act-3-scene-1.pdf
+test/hamlet-010-act-3-scene-2.pdf
+test/hamlet-011-act-3-scene-3.pdf
+test/hamlet-012-act-3-scene-4.pdf
+test/hamlet-013-act-4-scene-1.pdf
+test/hamlet-014-act-4-scene-2.pdf
+test/hamlet-015-act-4-scene-3.pdf
+test/hamlet-016-act-4-scene-4.pdf
+test/hamlet-017-act-4-scene-5.pdf
+test/hamlet-018-act-4-scene-6.pdf
+test/hamlet-019-act-4-scene-7.pdf
+test/hamlet-020-act-5-scene-1.pdf
+test/hamlet-021-act-5-scene-2.pdf

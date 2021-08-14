@@ -4,8 +4,8 @@
 void Control::option()
 {
     bool check = true;
-    string Exe_location=_pgmptr;//»ñÈ¡³ÌÐòÈ«Â·¾¶
-    for(int k=0;k<9;k++)//ÒòÎª´Ë³ÌÐò¹Ì¶¨Ãû³ÆÎªENLPA.exe Õâ¸ö×Ö·û´®³¤Îª9,ÄÇÃ´Ä¨È¥9¸öÔªËØµÃµ½¹¤×÷Ä¿Â¼
+    string Exe_location=_pgmptr;//èŽ·å–ç¨‹åºå…¨è·¯å¾„
+    for(int k=0;k<9;k++)//å› ä¸ºæ­¤ç¨‹åºå›ºå®šåç§°ä¸ºENLPA.exe è¿™ä¸ªå­—ç¬¦ä¸²é•¿ä¸º9,é‚£ä¹ˆæŠ¹åŽ»9ä¸ªå…ƒç´ å¾—åˆ°å·¥ä½œç›®å½•
         {
         Exe_location.erase(Exe_location.end()-1);
         }
@@ -13,15 +13,15 @@ void Control::option()
         dataconfirm datacheck;
     while (check)
     {
-        cout << "ÏÖÓÐ¹¦ÄÜ:" << endl
-             << "1.»ù±¾Êý¾ÝÒýÈë" << endl
-             << "2.Êý¾Ý¼ì²é" << endl; //ºóÐø¿ÉÒÔÌí¼Ó
-        cout << "ÇëÑ¡Ôñ¹¦ÄÜ..." << endl;
+        cout << "çŽ°æœ‰åŠŸèƒ½:" << endl
+             << "1.åŸºæœ¬æ•°æ®å¼•å…¥" << endl
+             << "2.æ•°æ®æ£€æŸ¥" << endl; //åŽç»­å¯ä»¥æ·»åŠ 
+        cout << "è¯·é€‰æ‹©åŠŸèƒ½..." << endl;
         int choose = _getch();
         switch (choose)
         {
         case 49:
-        system(cmd_command.c_str());//µ÷ÓÃ³ÌÐòBDI.exe
+        system(cmd_command.c_str());//è°ƒç”¨ç¨‹åºBDI.exe
             break;
         case 50:
         datacheck.GetDataList();
@@ -29,7 +29,7 @@ void Control::option()
         datacheck.print();
             break;
         default:
-            cout << "ÇëÊäÈëÕýÈ·µÄÐòºÅ..." << endl;
+            cout << "è¯·è¾“å…¥æ­£ç¡®çš„åºå·..." << endl;
             continue;
             break;
         }

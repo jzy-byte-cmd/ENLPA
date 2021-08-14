@@ -4,12 +4,12 @@
 void dataconfirm::GetDataList()
 {
     string Exe_location=_pgmptr,db_location,cmd_command;
-    for(int k=0;k<9;k++)//ÒòÎª´Ë³ÌĞò¹Ì¶¨Ãû³ÆÎªENLPA.exe Õâ¸ö×Ö·û´®³¤Îª9,ÄÇÃ´Ä¨È¥9¸öÔªËØµÃµ½¹¤×÷Ä¿Â¼
+    for(int k=0;k<9;k++)//å› ä¸ºæ­¤ç¨‹åºå›ºå®šåç§°ä¸ºENLPA.exe è¿™ä¸ªå­—ç¬¦ä¸²é•¿ä¸º9,é‚£ä¹ˆæŠ¹å»9ä¸ªå…ƒç´ å¾—åˆ°å·¥ä½œç›®å½•
     {
         Exe_location.erase(Exe_location.end()-1);
     }
-    db_location=Exe_location+"data\\DataBase\\";//Êı¾İ¿âÂ·¾¶
-    cmd_command="dir \""+db_location+"\" /b /a-d >list.txt";//µ¼³öÊı¾İ¿âÄÚËùÓĞÎÄ¼şÃûÖÁµ±Ç°Ä¿Â¼ÏÂµÄlist.txtÎÄ¼ş
+    db_location=Exe_location+"data\\DataBase\\";//æ•°æ®åº“è·¯å¾„
+    cmd_command="dir \""+db_location+"\" /b /a-d >list.txt";//å¯¼å‡ºæ•°æ®åº“å†…æ‰€æœ‰æ–‡ä»¶åè‡³å½“å‰ç›®å½•ä¸‹çš„list.txtæ–‡ä»¶
     system(cmd_command.c_str());
     return;
 }
@@ -21,30 +21,30 @@ void dataconfirm::GetData()
     string Exe_location=_pgmptr,db_location,reading_file,reading_file_location,
     str_need_check;
     stringstream converter;
-    int index=1;//ÎÊÌâ×Ö·û´®µÄÎ»ÖÃ
-    for(int k=0;k<9;k++)//ÒòÎª´Ë³ÌĞò¹Ì¶¨Ãû³ÆÎªENLPA.exe Õâ¸ö×Ö·û´®³¤Îª9,ÄÇÃ´Ä¨È¥9¸öÔªËØµÃµ½¹¤×÷Ä¿Â¼
+    int index=1;//é—®é¢˜å­—ç¬¦ä¸²çš„ä½ç½®
+    for(int k=0;k<9;k++)//å› ä¸ºæ­¤ç¨‹åºå›ºå®šåç§°ä¸ºENLPA.exe è¿™ä¸ªå­—ç¬¦ä¸²é•¿ä¸º9,é‚£ä¹ˆæŠ¹å»9ä¸ªå…ƒç´ å¾—åˆ°å·¥ä½œç›®å½•
     {
         Exe_location.erase(Exe_location.end()-1);
     }
-    db_location=Exe_location+"data\\DataBase\\";//Êı¾İ¿âÂ·¾¶
+    db_location=Exe_location+"data\\DataBase\\";//æ•°æ®åº“è·¯å¾„
     read_list.open("list.txt",ios::in);
-    while(read_list.peek()!=EOF)//Ñ­»·Ö±µ½list.txtÎÄ¼ş¶ÁÍê
+    while(read_list.peek()!=EOF)//å¾ªç¯ç›´åˆ°list.txtæ–‡ä»¶è¯»å®Œ
     {
         getline(read_list,reading_file);
         reading_file_location=db_location+reading_file;
         read_file.open(reading_file_location,ios::in);
         index=1;
-        while(read_file.peek()!=EOF)//Ñ­»·Ö±µ½Êı¾İ¿âÎÄ¼ş±»¶ÁÍê//¼´2000ĞĞ
+        while(read_file.peek()!=EOF)//å¾ªç¯ç›´åˆ°æ•°æ®åº“æ–‡ä»¶è¢«è¯»å®Œ//å³2000è¡Œ
         {
             getline(read_file,str_need_check);
-            bool result=this->DataCheck(str_need_check);//¼ì²é²¢µÃµ½½á¹û
-            if(result==false)//Èç¹û¼ì²éÏÂÀ´×Ö·û´®ÓĞÎÊÌâ
+            bool result=this->DataCheck(str_need_check);//æ£€æŸ¥å¹¶å¾—åˆ°ç»“æœ
+            if(result==false)//å¦‚æœæ£€æŸ¥ä¸‹æ¥å­—ç¬¦ä¸²æœ‰é—®é¢˜
             {
                 str_unvalid.push_back(str_need_check);
-                converter<<index;//½«Êı×ÖË÷Òı×ª»¯Îª×Ö·û´®
+                converter<<index;//å°†æ•°å­—ç´¢å¼•è½¬åŒ–ä¸ºå­—ç¬¦ä¸²
                 str_unvalid_location.push_back(reading_file+"  "+converter.str());
                 converter.clear();
-                converter.str("");//Çå¿Õ×ª»¯Æ÷
+                converter.str("");//æ¸…ç©ºè½¬åŒ–å™¨
             }
             index++;
         }
@@ -58,23 +58,40 @@ bool dataconfirm::DataCheck(string str)
 {
     for(int k=0;k<str.size();k++)
     {
-        if((int)str[k]<97||(int)str[k]>122)//±íÃ÷×Ö·û²»ÊÇĞ¡Ğ´×ÖÄ¸,aµÄasciiÂëÎª97,zÎª122
+        if((int)str[k]<97||(int)str[k]>122)//è¡¨æ˜å­—ç¬¦ä¸æ˜¯å°å†™å­—æ¯,açš„asciiç ä¸º97,zä¸º122
         {
-            if((int)str[k]<65||(int)str[k]>90)//±íÃ÷×Ö·û¼È²»ÊÇĞ¡Ğ´×ÖÄ¸Ò²²»ÊÇ´óĞ´×ÖÄ¸,A 65,Z 90
+            if((int)str[k]<65||(int)str[k]>90)//è¡¨æ˜å­—ç¬¦æ—¢ä¸æ˜¯å°å†™å­—æ¯ä¹Ÿä¸æ˜¯å¤§å†™å­—æ¯,A 65,Z 90
             {
-                return false;//·¢³öÖÊÑ¯
+                if((int)str[k]!=45)//å¦‚æœå­—ç¬¦ä¸æ˜¯-       -(ascii) 45
+                {
+                return false;//å‘å‡ºè´¨è¯¢
+                }
             }
         }
     }
     return true;
 }
 
-void dataconfirm::print()//´òÓ¡¿ÉÒÉ×Ö·û´®
+void dataconfirm::print()//æ‰“å°å¯ç–‘å­—ç¬¦ä¸²
 {
+    fstream write_file;
+    cout<<"å¼€å§‹æ‰“å°å¯ç–‘å­—ç¬¦ä¸²..."<<endl<<endl;
     for(int k=0;k<str_unvalid.size();k++)
     {
         cout<<str_unvalid[k]<<endl;
         cout<<str_unvalid_location[k]<<endl;
     }
+    cout<<"å¯ç–‘å­—ç¬¦ä¸²æ‰“å°å®Œæ¯•."<<endl;
+    if(str_unvalid.size()==0&&str_unvalid_location.size()==0)
+    {
+        cout<<"æ— å¯ç–‘å­—ç¬¦ä¸²."<<endl;
+    }
+    cout<<endl<<"æ‰€æœ‰çš„å¯ç–‘å­—ç¬¦ä¸²åŠå…¶ä½ç½®å°†ä¼šè¢«æ‰“å°åˆ°bad_char.txtå†…"<<endl;
+    write_file.open("bad_char.txt",ios::app|ios::out);
+    for(int k=0;k<str_unvalid.size();k++)
+    {
+        write_file<<str_unvalid[k]<<endl<<str_unvalid_location[k]<<endl;
+    }
+    write_file.close();
     return;
 }

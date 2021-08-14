@@ -3,52 +3,55 @@
 
 
 /*
-CBasicDataIntroÀà: RdNew()->JuAdd()--AskAdd()->[CfIntro()|CfValid()]--RmAdd()--CgRecord()
+CBasicDataIntroç±»: RdNew()->JuAdd()--AskAdd()->[CfIntro()|CfValid()]--RmAdd()--CgRecord()
                                    --exit               --exit   --exit
 */
 class CBasicDataIntro
 {
 public:
     void RdNew();
-    //¶ÁÈ¡targetÎÄ¼ş¼ĞÄÚµÄËùÓĞÎÄ¼ş
+    //è¯»å–targetæ–‡ä»¶å¤¹å†…çš„æ‰€æœ‰æ–‡ä»¶
 
     void JuAdd();
-    //ÅĞ¶ÏtargetÎÄ¼ş¼ĞÄÚÊÇ·ñÓĞÎÄ¼şÔö¼Ó(ÅĞ¶ÏÓĞÎŞĞÂÊı¾İĞèÒª±»ÒıÈë)
+    //åˆ¤æ–­targetæ–‡ä»¶å¤¹å†…æ˜¯å¦æœ‰æ–‡ä»¶å¢åŠ (åˆ¤æ–­æœ‰æ— æ–°æ•°æ®éœ€è¦è¢«å¼•å…¥)
 
     void AskAdd();
-    //Ñ¯ÎÊÄÄĞ©Êı¾İĞèÒª±»ÒıÈë(ÊÇ·ñĞèÒª±»ÒıÈë)
+    //è¯¢é—®å“ªäº›æ•°æ®éœ€è¦è¢«å¼•å…¥(æ˜¯å¦éœ€è¦è¢«å¼•å…¥)
 
     void RmAdd(string reset_command, string location_write,int attN_target,int attN_target_L);
-    //³·ÏúÊı¾İÒıÈë
+    //æ’¤é”€æ•°æ®å¼•å…¥
 
-    void CfIntro();//ÓëCfValid()²¢ĞĞ
-    //È·ÈÏÊı¾İÒıÈë,²¢ÒıÈë
-    bool CfValid(const string str,string location,const int code);//ÓëCfIntro()²¢ĞĞ
-    //¼ì²éÒıÈëµÄÊı¾İÊÇ·ñºÍÀúÊ·Êı¾İÖØ¸´
+    void CfIntro();//ä¸CfValid()å¹¶è¡Œ
+    //ç¡®è®¤æ•°æ®å¼•å…¥,å¹¶å¼•å…¥
+    bool CfValid(const string str,string location,const int code);//ä¸CfIntro()å¹¶è¡Œ
+    //æ£€æŸ¥å¼•å…¥çš„æ•°æ®æ˜¯å¦å’Œå†å²æ•°æ®é‡å¤
 
     void CgRecord(); 
-    //¸üĞÂÊı¾İ¿â¸ü¸Ä¼ÇÂ¼  
+    //æ›´æ–°æ•°æ®åº“æ›´æ”¹è®°å½•  
+
+    string RmNull(string str);
+    //å»é™¤æ•°æ®ä¸­çš„ç©ºæ ¼ä»¥åŠç©ºæ ¼åçš„æ‰€æœ‰å­—ç¬¦
 
 
 private:
     int mN_counter=0;
-    //¶ÁÈ¡list.txtµÄ´ÎÊı(ĞÂÔöµÄÎÄ¼şÊı)
+    //è¯»å–list.txtçš„æ¬¡æ•°(æ–°å¢çš„æ–‡ä»¶æ•°)
     
     vector<string> mV_context;
-    //´¢´æµ±Ç°targetÄ¿Â¼ÏÂËùÓĞÎÄ¼şÃû
+    //å‚¨å­˜å½“å‰targetç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶å
     
     map<int,string> mM_index;
 
     vector<string> mV_target;
-    //½«Òªµ¼ÈëÊı¾İ¿âµÄÎÄ¼ş
+    //å°†è¦å¯¼å…¥æ•°æ®åº“çš„æ–‡ä»¶
 
     vector<string> mV_changed;
-    //Êı¾İ¿âÖĞÓĞ¸ü¸ÄµÄÎÄ¼ş
+    //æ•°æ®åº“ä¸­æœ‰æ›´æ”¹çš„æ–‡ä»¶
 
     vector<string> str_stored;
-    //Êı¾İ¿âÖĞËùÓĞÒÑ´æÈëµÄµ¥´Ê
+    //æ•°æ®åº“ä¸­æ‰€æœ‰å·²å­˜å…¥çš„å•è¯
 
     vector<string> str_introduced;
-    //Ä³Ò»´ÎÒıÈëµÄËùÓĞµ¥´Ê
+    //æŸä¸€æ¬¡å¼•å…¥çš„æ‰€æœ‰å•è¯
 
 };

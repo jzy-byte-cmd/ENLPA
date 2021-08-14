@@ -5,9 +5,9 @@
 
 void CBasicDataIntro::RdNew()
 {
-    string Exe_location=_pgmptr;//»ñÈ¡³ÌĞòÈ«Â·¾¶
+    string Exe_location=_pgmptr;//è·å–ç¨‹åºå…¨è·¯å¾„
     string cmd_command;
-    for(int k=0;k<7;k++)//ÒòÎª´Ë³ÌĞò¹Ì¶¨Ãû³ÆÎªBDI.exe Õâ¸ö×Ö·û´®³¤Îª7,ÄÇÃ´Ä¨È¥7¸öÔªËØµÃµ½¹¤×÷Ä¿Â¼
+    for(int k=0;k<7;k++)//å› ä¸ºæ­¤ç¨‹åºå›ºå®šåç§°ä¸ºBDI.exe è¿™ä¸ªå­—ç¬¦ä¸²é•¿ä¸º7,é‚£ä¹ˆæŠ¹å»7ä¸ªå…ƒç´ å¾—åˆ°å·¥ä½œç›®å½•
     {
         Exe_location.erase(Exe_location.end()-1);
     }
@@ -15,11 +15,6 @@ void CBasicDataIntro::RdNew()
     system(cmd_command.c_str());
     fstream file;
     file.open(Exe_location+"list.txt",ios::in);
-    if(file.fail())
-    {
-        cout<<"fail!"<<endl;
-        file.open(Exe_location+"list.txt",ios::in);
-    }
     while(file.peek()!=EOF)
     {
         string temp_in;
@@ -46,7 +41,7 @@ void CBasicDataIntro::JuAdd()
     }
     else
     {
-        cout<<"ÔİÎŞĞÂÊı¾İ±»Ìí¼Ó,ÔÚ3sÄÚÍË³ö³ÌĞò..."<<endl;
+        cout<<"æš‚æ— æ–°æ•°æ®è¢«æ·»åŠ ,åœ¨3så†…é€€å‡ºç¨‹åº..."<<endl;
         Sleep(3000);
         exit(0);
     }
@@ -55,65 +50,65 @@ void CBasicDataIntro::JuAdd()
 
 void CBasicDataIntro::AskAdd()
 {
-    for(int k=1;k<=mV_context.size();k++)//½«contextÄÚµÄËùÓĞ×Ö·û´®´Ó¼üÖµ1¿ªÊ¼ÒÀ´Î¸³¸øindex
+    for(int k=1;k<=mV_context.size();k++)//å°†contextå†…çš„æ‰€æœ‰å­—ç¬¦ä¸²ä»é”®å€¼1å¼€å§‹ä¾æ¬¡èµ‹ç»™index
         {
             mM_index.insert({k,mV_context[k-1]});
         }
-        cout<<"ÓĞĞÂÊı¾İ±»Ìí¼Ó,ÇëÊäÈëĞòºÅÒÔÑ¡ÔñÒªÒÆÈëÊı¾İ¿âµÄÊı¾İ,²¢ÓÃ¶ººÅ·Ö¸ô(ÇÒ±ØĞëÈ·¶¨¶ººÅÎª°ë½Ç[Ó¢ÎÄ])"<<endl;
-        cout<<"Àı:Ñ¡ÔñĞòºÅ1,2,3"<<endl<<"ÔòÊäÈë"<<endl<<"1,2,3"<<endl<<"²¢ÒÔ»Ø³µ½áÎ²"<<endl;
-        cout<<"ÄúÒ²¿ÉÒÔÊäÈëall,À´½«ÒÔÏÂÊı¾İÈ«²¿ÒÆÈëÊı¾İ¿â"<<endl<<endl;
-        for(int k=1;k<=mM_index.size();k++)//´òÓ¡indexÖĞËùÓĞµÄ¼üÖµºÍÔªËØ
+        cout<<"æœ‰æ–°æ•°æ®è¢«æ·»åŠ ,è¯·è¾“å…¥åºå·ä»¥é€‰æ‹©è¦ç§»å…¥æ•°æ®åº“çš„æ•°æ®,å¹¶ç”¨é€—å·åˆ†éš”(ä¸”å¿…é¡»ç¡®å®šé€—å·ä¸ºåŠè§’[è‹±æ–‡])"<<endl;
+        cout<<"ä¾‹:é€‰æ‹©åºå·1,2,3"<<endl<<"åˆ™è¾“å…¥"<<endl<<"1,2,3"<<endl<<"å¹¶ä»¥å›è½¦ç»“å°¾"<<endl;
+        cout<<"æ‚¨ä¹Ÿå¯ä»¥è¾“å…¥all,æ¥å°†ä»¥ä¸‹æ•°æ®å…¨éƒ¨ç§»å…¥æ•°æ®åº“"<<endl<<endl;
+        for(int k=1;k<=mM_index.size();k++)//æ‰“å°indexä¸­æ‰€æœ‰çš„é”®å€¼å’Œå…ƒç´ 
         {
             cout<<k<<"."<<mM_index[k]<<endl;
         }
-        bool coB_check=true;//¿ØÖÆ±äÁ¿
+        bool coB_check=true;//æ§åˆ¶å˜é‡
         string command;
         while (coB_check)
         {
             int coN_getch = 0;
-            cout << "ÇëÊäÈë..." << endl
+            cout << "è¯·è¾“å…¥..." << endl
                  << endl;
             cin >> command;
-            cout << "ÄúÊäÈëµÄÖ¸ÁîÎª:" << endl
+            cout << "æ‚¨è¾“å…¥çš„æŒ‡ä»¤ä¸º:" << endl
                  << command << endl;
-            cout << "Çë¼ì²é¿ªÍ·ºÍÄ©Î²ÓĞÃ»ÓĞ¶àÓàµÄ·ûºÅ(°üÀ¨¶ººÅ[°ë½Ç],ÒÔ¼°ÈÎÒâ×Ö·û)" << endl
-                 << "Èç¹ûº¬ÓĞ¶àÓàµÄ·ûºÅ¿ÉÄÜµ¼ÖÂ³ÌĞò·¢Éú´íÎó" << endl;
-            cout << "°´ÏÂY¼üÒÔÈ·¶¨" << endl
-                 << "°´ÏÂN¼üÒÔÖØĞÂÊäÈë" << endl;
+            cout << "è¯·æ£€æŸ¥å¼€å¤´å’Œæœ«å°¾æœ‰æ²¡æœ‰å¤šä½™çš„ç¬¦å·(åŒ…æ‹¬é€—å·[åŠè§’],ä»¥åŠä»»æ„å­—ç¬¦)" << endl
+                 << "å¦‚æœå«æœ‰å¤šä½™çš„ç¬¦å·å¯èƒ½å¯¼è‡´ç¨‹åºå‘ç”Ÿé”™è¯¯" << endl;
+            cout << "æŒ‰ä¸‹Yé”®ä»¥ç¡®å®š" << endl
+                 << "æŒ‰ä¸‹Né”®ä»¥é‡æ–°è¾“å…¥" << endl;
             coN_getch = getch();
-            if (coN_getch == 89 || coN_getch == 121) //Èç¹û°´ÏÂy¼ü
+            if (coN_getch == 89 || coN_getch == 121) //å¦‚æœæŒ‰ä¸‹yé”®
             {
                 coB_check = false;
-                continue; //Ìø³öÑ­»·½øĞĞÏÂÒ»²½
+                continue; //è·³å‡ºå¾ªç¯è¿›è¡Œä¸‹ä¸€æ­¥
             }
             else
             {
-                if(coN_getch==78||coN_getch==110)//Èç¹û°´ÏÂn¼ü
+                if(coN_getch==78||coN_getch==110)//å¦‚æœæŒ‰ä¸‹né”®
                 {
-                    continue;//ÖØĞÂÊäÈë
+                    continue;//é‡æ–°è¾“å…¥
                 }
-                else//Èç¹ûÃ»ÓĞ°´ÕÕÕıÈ·ÌáÊ¾ÊäÈëÖ¸Áî  ±ÜÃâÔÙ¶àÒ»²ãÑ­»·ÅĞ¶Ï ±£ÏÕÆğ¼ûÖ±½ÓÈÃÓÃ»§ÖØĞÂÊäÈë
+                else//å¦‚æœæ²¡æœ‰æŒ‰ç…§æ­£ç¡®æç¤ºè¾“å…¥æŒ‡ä»¤  é¿å…å†å¤šä¸€å±‚å¾ªç¯åˆ¤æ–­ ä¿é™©èµ·è§ç›´æ¥è®©ç”¨æˆ·é‡æ–°è¾“å…¥
                 {
                     continue;
                 }
             }
         }
-        if(command.compare("all")!=0)//½«Ä¿±êÎÄ¼şÃûÈ«²¿ÍÆÈëm_target
+        if(command.compare("all")!=0)//å°†ç›®æ ‡æ–‡ä»¶åå…¨éƒ¨æ¨å…¥m_target
         {
-            stringstream converter;//½«×Ö·û´®ĞÍµÄ¡°Êı×Ö¡± ×ªÎª int ÀàĞÍµÄÊı×ÖÒÔ±ãºÍindexµÄ¼üÖµÀàĞÍ¶ÔÓ¦
-            string temp;//ÁÙÊ±´æ·Å(×Ö·û´®ÀàĞÍ)Êı×ÖµÄ±äÁ¿
-            int tempN_converted=0;//ÁÙÊ±´æ·Å(int ÀàĞÍ)Êı×ÖµÄ±äÁ¿
+            stringstream converter;//å°†å­—ç¬¦ä¸²å‹çš„â€œæ•°å­—â€ è½¬ä¸º int ç±»å‹çš„æ•°å­—ä»¥ä¾¿å’Œindexçš„é”®å€¼ç±»å‹å¯¹åº”
+            string temp;//ä¸´æ—¶å­˜æ”¾(å­—ç¬¦ä¸²ç±»å‹)æ•°å­—çš„å˜é‡
+            int tempN_converted=0;//ä¸´æ—¶å­˜æ”¾(int ç±»å‹)æ•°å­—çš„å˜é‡
             for(int k=0;k<command.size();k++)
             {
                 if(command[k]!=',')
                 {
                     temp+=command[k];
                 }
-                else//Èç¹ûÓöµ½¶ººÅÔò½«Ç°ÃæµÄÊı×Ö½øĞĞ×ª»»
+                else//å¦‚æœé‡åˆ°é€—å·åˆ™å°†å‰é¢çš„æ•°å­—è¿›è¡Œè½¬æ¢
                 {
                     converter<<temp;
                     converter>>tempN_converted;
-                    mV_target.push_back(mM_index.at(tempN_converted));//Ê¹ÓÃatÀ´·ÀÖ¹Ô½½ç·ÃÎÊ
+                    mV_target.push_back(mM_index.at(tempN_converted));//ä½¿ç”¨atæ¥é˜²æ­¢è¶Šç•Œè®¿é—®
                     temp.clear();
                     tempN_converted=0;
                     converter.clear();
@@ -122,7 +117,7 @@ void CBasicDataIntro::AskAdd()
             }
             converter<<temp;
             converter>>tempN_converted;
-            mV_target.push_back(mM_index.at(tempN_converted));//Ê¹ÓÃatÀ´·ÀÖ¹Ô½½ç·ÃÎÊ
+            mV_target.push_back(mM_index.at(tempN_converted));//ä½¿ç”¨atæ¥é˜²æ­¢è¶Šç•Œè®¿é—®
             temp.clear();
             tempN_converted=0;
             converter.clear();
@@ -130,7 +125,7 @@ void CBasicDataIntro::AskAdd()
         }
         else
         {
-            for(int k=1;k<=mM_index.size();k++)//Èç¹ûÈ«²¿µ¼ÈëÊı¾İ¿â  Ö±½Ó±éÀúindex ½«Ä¿±êÎÄ¼şÃûÈ«²¿ÍÆÈëmV_target
+            for(int k=1;k<=mM_index.size();k++)//å¦‚æœå…¨éƒ¨å¯¼å…¥æ•°æ®åº“  ç›´æ¥éå†index å°†ç›®æ ‡æ–‡ä»¶åå…¨éƒ¨æ¨å…¥mV_target
             {
                 mV_target.push_back(mM_index.at(k));
             }
@@ -142,9 +137,9 @@ void CBasicDataIntro::AskAdd()
 void CBasicDataIntro::CfIntro()
 {
     fstream file,file_write,file_read;
-    string location=_pgmptr;//»ñÈ¡³ÌĞòËùÔÚµÄÈ«Â·¾¶
+    string location=_pgmptr;//è·å–ç¨‹åºæ‰€åœ¨çš„å…¨è·¯å¾„
     string location_write,location_read,location_first,location_backup;
-    for(int k=0;k<7;k++)//ÒòÎª´Ë³ÌĞò¹Ì¶¨Ãû³ÆÎªBDI.exe Õâ¸ö×Ö·û´®³¤Îª7,ÄÇÃ´Ä¨È¥7¸öÔªËØµÃµ½¹¤×÷Ä¿Â¼
+    for(int k=0;k<7;k++)//å› ä¸ºæ­¤ç¨‹åºå›ºå®šåç§°ä¸ºBDI.exe è¿™ä¸ªå­—ç¬¦ä¸²é•¿ä¸º7,é‚£ä¹ˆæŠ¹å»7ä¸ªå…ƒç´ å¾—åˆ°å·¥ä½œç›®å½•
     {
         location.erase(location.end()-1);
     }
@@ -160,15 +155,15 @@ void CBasicDataIntro::CfIntro()
     {
         while (coB_check)
         {
-            cout << "¶ªÊ§¹Ø¼üÎÄ¼şlast_location.txt" << endl
-                 << "ÇëÎÊÊÇ·ñÍË³ö³ÌĞò?" << endl;
-            cout << "Èç¹ûÄúÊÇÊ×´ÎÊ¹ÓÃ¸Ã³ÌĞò,Ã»ÓĞÎÄ¼şlast_location.txt ÊÇÕı³£µÄ" << endl;
-            cout << "Çë¼ÌĞøÊ¹ÓÃ³ÌĞò" << endl;
+            cout << "ä¸¢å¤±å…³é”®æ–‡ä»¶last_location.txt" << endl
+                 << "è¯·é—®æ˜¯å¦é€€å‡ºç¨‹åº?" << endl;
+            cout << "å¦‚æœæ‚¨æ˜¯é¦–æ¬¡ä½¿ç”¨è¯¥ç¨‹åº,æ²¡æœ‰æ–‡ä»¶last_location.txt æ˜¯æ­£å¸¸çš„" << endl;
+            cout << "è¯·ç»§ç»­ä½¿ç”¨ç¨‹åº" << endl;
             while (coB_check_second)
             {
-                cout << "¼ÌĞøÊ¹ÓÃÇë°´Y,·ñÔò°´N" << endl;
+                cout << "ç»§ç»­ä½¿ç”¨è¯·æŒ‰Y,å¦åˆ™æŒ‰N" << endl;
                 coN_getch = getch();
-                if (coN_getch == 89 || coN_getch == 121) //Èç¹û°´ÏÂy¼ü
+                if (coN_getch == 89 || coN_getch == 121) //å¦‚æœæŒ‰ä¸‹yé”®
                 {
                     coB_check_second=false;
                     coB_check=false;
@@ -176,35 +171,35 @@ void CBasicDataIntro::CfIntro()
                 }
                 else
                 {
-                    if(coN_getch==78||coN_getch==110)//Èç¹û°´ÏÂn¼ü
+                    if(coN_getch==78||coN_getch==110)//å¦‚æœæŒ‰ä¸‹né”®
                     {
-                        cout<<"³ÌĞòÕıÔÚÍË³ö..."<<endl;
+                        cout<<"ç¨‹åºæ­£åœ¨é€€å‡º..."<<endl;
                         Sleep(3000);
                         exit(0);
                     }
-                    else//ÓÃ»§Ã»°´ÕÕÖ¸Ê¾ÊäÈë
+                    else//ç”¨æˆ·æ²¡æŒ‰ç…§æŒ‡ç¤ºè¾“å…¥
                     {
-                        cout<<"ÊäÈëµÄÖ¸Áî²»ÕıÈ·"<<endl<<"ÇëÖØĞÂÊäÈë"<<endl;
+                        cout<<"è¾“å…¥çš„æŒ‡ä»¤ä¸æ­£ç¡®"<<endl<<"è¯·é‡æ–°è¾“å…¥"<<endl;
                         coN_getch=0;
                         continue;
                     }
                 }
             }
         }
-        file.open(location,ios::out|ios::app);//Èç¹ûÊÇÊ×´ÎÔËĞĞ³ÌĞò Ğ´Èë 1ºÍ1
+        file.open(location,ios::out|ios::app);//å¦‚æœæ˜¯é¦–æ¬¡è¿è¡Œç¨‹åº å†™å…¥ 1å’Œ1
         file<<"1"<<endl<<"1"<<endl;
         file.close();
-        file.open(location_first,ios::out|ios::app);//´´½¨1.txt
+        file.open(location_first,ios::out|ios::app);//åˆ›å»º1.txt
         file.close();
         file.open(location,ios::in);
     }
-    string att_target,att_target_L;//stringÀàĞÍµÄ ±äÁ¿
+    string att_target,att_target_L;//stringç±»å‹çš„ å˜é‡
     int attN_target_L=0,attN_target=0;
-    getline(file,att_target);//´Ólast_locationÖĞ¶ÁÈ¡2¸öË÷Òı 
+    getline(file,att_target);//ä»last_locationä¸­è¯»å–2ä¸ªç´¢å¼• 
     getline(file,att_target_L);
     file.close();
     stringstream converter;
-    converter<<att_target_L;//Í¨¹ıstringstring ½«2¸öË÷Òı×ª»¯ÎªÕûĞÍ·½±ãºóÃæÅĞ¶ÏĞĞÊı
+    converter<<att_target_L;//é€šè¿‡stringstring å°†2ä¸ªç´¢å¼•è½¬åŒ–ä¸ºæ•´å‹æ–¹ä¾¿åé¢åˆ¤æ–­è¡Œæ•°
     converter>>attN_target_L;
     converter.clear();
     converter.str("");              
@@ -212,29 +207,30 @@ void CBasicDataIntro::CfIntro()
     converter>>attN_target;
     converter.clear();
     converter.str("");
-    string temp_location_read,temp_location_write;//ÁÙÊ±µÄ¶ÁÈ¡ÎÄ¼şÎ»ÖÃºÍĞ´ÈëÎÄ¼şÎ»ÖÃ  ÏêÇé¼û×¢½â1
+    string temp_location_read,temp_location_write;//ä¸´æ—¶çš„è¯»å–æ–‡ä»¶ä½ç½®å’Œå†™å…¥æ–‡ä»¶ä½ç½®  è¯¦æƒ…è§æ³¨è§£1
     string target_context,reset_target;
     temp_location_write=location_write+att_target+".txt";
     reset_target=att_target;
-    string cmd_command="copy "+temp_location_write+" "+location_backup;//±¸·İ¼´½«¸ü¸ÄµÄÊı¾İ¿âÎÄ¼ş
+    string cmd_command="copy "+temp_location_write+" "+location_backup;//å¤‡ä»½å³å°†æ›´æ”¹çš„æ•°æ®åº“æ–‡ä»¶
     system(cmd_command.c_str());
     system("pause");
     file_write.open(temp_location_write,ios::out|ios::app);
     mV_changed.push_back(temp_location_write);
     bool valid=false;
     int code=0;
-    for(int k=0;k<mV_target.size();k++)//×¢½â1 µÄÊµÏÖ
+    for(int k=0;k<mV_target.size();k++)//æ³¨è§£1 çš„å®ç°
     {
         temp_location_read=location_read+mV_target[k];
         file_read.open(temp_location_read,ios::in);
-        cout<<"¶ÁÈ¡Î»ÖÃ:"<<endl<<temp_location_read<<endl;
-        cout<<"Ğ´ÈëÎ»ÖÃ"<<endl<<temp_location_write<<endl;
+        cout<<"è¯»å–ä½ç½®:"<<endl<<temp_location_read<<endl;
+        cout<<"å†™å…¥ä½ç½®"<<endl<<temp_location_write<<endl;
         while(file_read.peek()!=EOF)
         {
             getline(file_read,target_context);
+            target_context=RmNull(target_context);//å»é™¤æ•°æ®ä¸­çš„ç©ºæ ¼åŠç©ºæ ¼åçš„æ‰€æœ‰å­—ç¬¦
             valid=this->CfValid(target_context,location_write,code);
             code=1;
-            if(valid==true)//Èç¹ûĞÂÌíµÄµ¥´ÊÔÚÊı¾İ¿âÖĞÃ»ÓĞ,ÄÇÃ´½«´Ëµ¥´ÊÌí¼ÓÈëÊı¾İ¿â
+            if(valid==true)//å¦‚æœæ–°æ·»çš„å•è¯åœ¨æ•°æ®åº“ä¸­æ²¡æœ‰,é‚£ä¹ˆå°†æ­¤å•è¯æ·»åŠ å…¥æ•°æ®åº“
             {
             file_write<<target_context<<endl;
             str_introduced.push_back(target_context);
@@ -242,12 +238,12 @@ void CBasicDataIntro::CfIntro()
             target_context.clear();
             attN_target_L++;
             }
-            else//Èç¹ûĞÂµ¥´ÊºÍÊı¾İ¿âÖĞµÄµ¥´ÊÖØ¸´,ÔòÅ×Æú´Ëµ¥´Ê
+            else//å¦‚æœæ–°å•è¯å’Œæ•°æ®åº“ä¸­çš„å•è¯é‡å¤,åˆ™æŠ›å¼ƒæ­¤å•è¯
             {
                 target_context.clear();
                 valid=false;
             }
-            if(attN_target_L==2001)//Ò»¸ötxtÎÄ¼şµÄ×î´óĞĞÊı
+            if(attN_target_L==2001)//ä¸€ä¸ªtxtæ–‡ä»¶çš„æœ€å¤§è¡Œæ•°
             {
                 attN_target++;
                 converter<<attN_target;
@@ -258,7 +254,7 @@ void CBasicDataIntro::CfIntro()
                 attN_target_L=1;
                 file_write.close();
                 temp_location_write=location_write+att_target+".txt";
-                file_write.open(temp_location_write,ios::out|ios::app);//´´½¨ĞÂÎÄµµ
+                file_write.open(temp_location_write,ios::out|ios::app);//åˆ›å»ºæ–°æ–‡æ¡£
                 mV_changed.push_back(temp_location_write);
                 continue;
             }
@@ -275,21 +271,21 @@ po: cmd_command=location_backup+reset_target+".txt "+location_write;
 
 void CBasicDataIntro::RmAdd(string reset_command,string location_write,int attN_target,int attN_target_L)
 {
-    cout << "Êı¾İÂ¼ÈëÒÑÍê³É!" << endl;
-    cout << "ÒÑ¸ü¸ÄµÄÊı¾İ:" << endl;
+    cout << "æ•°æ®å½•å…¥å·²å®Œæˆ!" << endl;
+    cout << "å·²æ›´æ”¹çš„æ•°æ®:" << endl;
     for (int k = 0; k < mV_changed.size(); k++)
     {
         cout << k << "." << mV_changed[k] << endl;
     }
     cout << endl;
-    cout << "ÊÇ·ñ±£´æ¸ü¸Ä?" << endl;
+    cout << "æ˜¯å¦ä¿å­˜æ›´æ”¹?" << endl;
     bool coB_check = true;
     int coN_getch = 0;
     while (coB_check)
     {
-        cout << "±£´æÇë°´Y,³·Ïú¸ü¸ÄÇë°´N" << endl;
+        cout << "ä¿å­˜è¯·æŒ‰Y,æ’¤é”€æ›´æ”¹è¯·æŒ‰N" << endl;
         coN_getch = getch();
-        if (coN_getch == 78 || coN_getch == 110) //³·Ïú¸ü¸Ä
+        if (coN_getch == 78 || coN_getch == 110) //æ’¤é”€æ›´æ”¹
         {
             string delete_command;
             for (int k = 0; k < mV_changed.size(); k++)
@@ -300,38 +296,38 @@ void CBasicDataIntro::RmAdd(string reset_command,string location_write,int attN_
             delete_command = reset_command;
             reset_command = "copy " + reset_command;
             system(reset_command.c_str());
-            for (int k = 0; k <= location_write.size(); k++) //Ä¨È¥location_writeºÍ Ç°ÃæµÄ¿Õ¸ñ ¼û±êÇ© po ´óÖÂÎ»ÓÚ239ĞĞ
+            for (int k = 0; k <= location_write.size(); k++) //æŠ¹å»location_writeå’Œ å‰é¢çš„ç©ºæ ¼ è§æ ‡ç­¾ po å¤§è‡´ä½äº239è¡Œ
             {
                 delete_command.erase(delete_command.end() - 1);
             }
             string save_command = "del " + delete_command;
-            system(save_command.c_str()); //É¾³ı±¸·İ
-            cout << "¸ü¸ÄÒÑ³·Ïú,¼´½«ÍË³ö³ÌĞò..." << endl;
+            system(save_command.c_str()); //åˆ é™¤å¤‡ä»½
+            cout << "æ›´æ”¹å·²æ’¤é”€,å³å°†é€€å‡ºç¨‹åº..." << endl;
             Sleep(3000);
             exit(0);
         }
         else
         {
-            if (coN_getch == 89 || coN_getch == 121) //°´ÏÂy¼ü ±£´æ¸ü¸Ä
+            if (coN_getch == 89 || coN_getch == 121) //æŒ‰ä¸‹yé”® ä¿å­˜æ›´æ”¹
             {
                 coB_check = false;
-                for(int k=0;k<=location_write.size();k++)//Ä¨È¥location_writeºÍ Ç°ÃæµÄ¿Õ¸ñ ¼û±êÇ© po ´óÖÂÎ»ÓÚ239ĞĞ
+                for(int k=0;k<=location_write.size();k++)//æŠ¹å»location_writeå’Œ å‰é¢çš„ç©ºæ ¼ è§æ ‡ç­¾ po å¤§è‡´ä½äº239è¡Œ
                 {
                     reset_command.erase(reset_command.end()-1);
                 }
                 string save_command="del "+reset_command;
-                system(save_command.c_str());//É¾³ı±¸·İ
+                system(save_command.c_str());//åˆ é™¤å¤‡ä»½
                 location_write+="last_location.txt";
                 fstream file;
                 file.open(location_write,ios::out|ios::trunc);
                 file<<attN_target<<endl<<attN_target_L<<endl;
-                file.close();//¸üĞÂ last_location.txt ÖĞµÄÄÚÈİ 
-                return; //Ö´ĞĞCgRecord
+                file.close();//æ›´æ–° last_location.txt ä¸­çš„å†…å®¹ 
+                return; //æ‰§è¡ŒCgRecord
             }
-            else //ÓÃ»§Ã»ÓĞÊäÈëÕıÈ·Ö¸Áî
+            else //ç”¨æˆ·æ²¡æœ‰è¾“å…¥æ­£ç¡®æŒ‡ä»¤
             {
-                cout << "ÄúÊäÈëµÄÖ¸Áî´íÎó" << endl
-                     << "ÇëÖØĞÂÊäÈë" << endl;
+                cout << "æ‚¨è¾“å…¥çš„æŒ‡ä»¤é”™è¯¯" << endl
+                     << "è¯·é‡æ–°è¾“å…¥" << endl;
                 continue;
             }
         }
@@ -341,8 +337,8 @@ void CBasicDataIntro::RmAdd(string reset_command,string location_write,int attN_
 
 void CBasicDataIntro::CgRecord()
 {
-    string location=_pgmptr;//»ñÈ¡³ÌĞòËùÔÚµÄÈ«Â·¾¶
-    for(int k=0;k<7;k++)//ÒòÎª´Ë³ÌĞò¹Ì¶¨Ãû³ÆÎªBDI.exe Õâ¸ö×Ö·û´®³¤Îª7,ÄÇÃ´Ä¨È¥7¸öÔªËØµÃµ½¹¤×÷Ä¿Â¼
+    string location=_pgmptr;//è·å–ç¨‹åºæ‰€åœ¨çš„å…¨è·¯å¾„
+    for(int k=0;k<7;k++)//å› ä¸ºæ­¤ç¨‹åºå›ºå®šåç§°ä¸ºBDI.exe è¿™ä¸ªå­—ç¬¦ä¸²é•¿ä¸º7,é‚£ä¹ˆæŠ¹å»7ä¸ªå…ƒç´ å¾—åˆ°å·¥ä½œç›®å½•
     {
         location.erase(location.end()-1);
     }
@@ -355,13 +351,13 @@ void CBasicDataIntro::CgRecord()
     {
         while (coB_check)
         {
-            cout<<"¶ÁÈ¡¼ÇÂ¼Ë÷ÒıÊ§°Ü,ÊÇ·ñÍË³ö³ÌĞò?"<<endl;
-            cout<<"Èç¹ûÄúÊÇµÚ1´ÎÊ¹ÓÃ±¾³ÌĞò,Çë¼ÌĞøÊ¹ÓÃ"<<endl<<endl;
+            cout<<"è¯»å–è®°å½•ç´¢å¼•å¤±è´¥,æ˜¯å¦é€€å‡ºç¨‹åº?"<<endl;
+            cout<<"å¦‚æœæ‚¨æ˜¯ç¬¬1æ¬¡ä½¿ç”¨æœ¬ç¨‹åº,è¯·ç»§ç»­ä½¿ç”¨"<<endl<<endl;
             while (coB_check_second)
             {
-                cout << "¼ÌĞøÊ¹ÓÃÇë°´Y,·ñÔò°´N" << endl;
+                cout << "ç»§ç»­ä½¿ç”¨è¯·æŒ‰Y,å¦åˆ™æŒ‰N" << endl;
                 coN_getch = getch();
-                if (coN_getch == 89 || coN_getch == 121) //Èç¹û°´ÏÂy¼ü
+                if (coN_getch == 89 || coN_getch == 121) //å¦‚æœæŒ‰ä¸‹yé”®
                 {
                     coB_check_second=false;
                     coB_check=false;
@@ -369,26 +365,25 @@ void CBasicDataIntro::CgRecord()
                 }
                 else
                 {
-                    if(coN_getch==78||coN_getch==110)//Èç¹û°´ÏÂn¼ü
+                    if(coN_getch==78||coN_getch==110)//å¦‚æœæŒ‰ä¸‹né”®
                     {
-                        cout<<"³ÌĞòÕıÔÚÍË³ö..."<<endl;
+                        cout<<"ç¨‹åºæ­£åœ¨é€€å‡º..."<<endl;
                         Sleep(3000);
                         exit(0);
                     }
-                    else//ÓÃ»§Ã»°´ÕÕÖ¸Ê¾ÊäÈë
+                    else//ç”¨æˆ·æ²¡æŒ‰ç…§æŒ‡ç¤ºè¾“å…¥
                     {
-                        cout<<"ÊäÈëµÄÖ¸Áî²»ÕıÈ·"<<endl<<"ÇëÖØĞÂÊäÈë"<<endl;
+                        cout<<"è¾“å…¥çš„æŒ‡ä»¤ä¸æ­£ç¡®"<<endl<<"è¯·é‡æ–°è¾“å…¥"<<endl;
                         coN_getch=0;
                         continue;
                     }
                 }
             }
         }
-        file.open(location_record_index,ios::out|ios::app);//´´½¨Ë÷Òı
+        file.open(location_record_index,ios::out|ios::app);//åˆ›å»ºç´¢å¼•
         file<<"1"<<endl;
         file.close();
         file.open(location_record_index,ios::in);
-    }
     string index;
     int N_index;
     getline(file,index);
@@ -398,7 +393,7 @@ void CBasicDataIntro::CgRecord()
     converter>>N_index;
     converter.clear();
     converter.str("");
-    for(int k=0;k<mV_target.size();k++)//½«ÒıÈëµÄÊı¾İ×ö±¸·İµ½ \record\Introduced
+    for(int k=0;k<mV_target.size();k++)//å°†å¼•å…¥çš„æ•°æ®åšå¤‡ä»½åˆ° \record\Introduced
     {
         string move="copy \""+location+"target\\"+mV_target[k]+"\" \""+location+"record\\Introduced\\\"";
         system(move.c_str());
@@ -407,23 +402,23 @@ void CBasicDataIntro::CgRecord()
     }
     string del_target="rd "+location+"target /q /s";
     string mk_target="mkdir "+location+"target";
-    system(del_target.c_str());//É¾³ıtargetÄ¿Â¼¼°Ä¿Â¼ÀïµÄËùÓĞÎÄ¼ş
-    system(mk_target.c_str());//ĞÂ½¨targetÄ¿Â¼
+    system(del_target.c_str());//åˆ é™¤targetç›®å½•åŠç›®å½•é‡Œçš„æ‰€æœ‰æ–‡ä»¶
+    system(mk_target.c_str());//æ–°å»ºtargetç›®å½•
     string location_record=location+"record\\"+index+".txt";
     file.open(location_record,ios::out|ios::app);
-    // »ùÓÚµ±Ç°ÏµÍ³µÄµ±Ç°ÈÕÆÚ/Ê±¼ä
+    // åŸºäºå½“å‰ç³»ç»Ÿçš„å½“å‰æ—¥æœŸ/æ—¶é—´
     time_t now = time(0);
    
-   // °Ñ now ×ª»»Îª×Ö·û´®ĞÎÊ½
+   // æŠŠ now è½¬æ¢ä¸ºå­—ç¬¦ä¸²å½¢å¼
     char* dt = ctime(&now);
-    file<<"µ±µØÊ±¼ä:"<<endl<<dt<<endl<<endl;//Ğ´ÈëÊ±¼ä
-    file<<"ÒıÈëµÄÊı¾İ:"<<endl;
+    file<<"å½“åœ°æ—¶é—´:"<<endl<<dt<<endl<<endl;//å†™å…¥æ—¶é—´
+    file<<"å¼•å…¥çš„æ•°æ®:"<<endl;
     for(int k=0;k<mV_target.size();k++)
     {
         file<<k<<". "<<mV_target[k]<<endl;
     }
     file<<endl;
-    file<<"Êı¾İ¿âÖĞÓÉÓÚÊı¾İµÄÒıÈë¶ø±»¸ü¸ÄµÄÎÄ¼ş:"<<endl;
+    file<<"æ•°æ®åº“ä¸­ç”±äºæ•°æ®çš„å¼•å…¥è€Œè¢«æ›´æ”¹çš„æ–‡ä»¶:"<<endl;
     for(int k=0;k<mV_changed.size();k++)
     {
         file<<k<<". "<<mV_changed[k]<<endl;
@@ -435,21 +430,21 @@ void CBasicDataIntro::CgRecord()
     file<<N_index<<endl;
     file.close();
     return;
-
+    }
 }
 
 bool CBasicDataIntro::CfValid(const string str,string location,const int code)
 {
-    if (code == 0) //Èç¹û´«Èë0  Ôò±íÃ÷ĞèÒªÊÕ¼¯Êı¾İ¿âÄÚÒÑÓĞµÄµ¥´Ê
+    if (code == 0) //å¦‚æœä¼ å…¥0  åˆ™è¡¨æ˜éœ€è¦æ”¶é›†æ•°æ®åº“å†…å·²æœ‰çš„å•è¯
     {
-        vector<string> str_file; //Ç°ÕßÎªÊı¾İ¿âÖĞÒÑÓĞµÄÈ«²¿µ¥´Ê,ºóÕßÎªÊı¾İ¿âÖĞµ¥´Ê·ÖÇøµÄÎÄ¼şÃû¼¯ºÏ
+        vector<string> str_file; //å‰è€…ä¸ºæ•°æ®åº“ä¸­å·²æœ‰çš„å…¨éƒ¨å•è¯,åè€…ä¸ºæ•°æ®åº“ä¸­å•è¯åˆ†åŒºçš„æ–‡ä»¶åé›†åˆ
         fstream file_read;
         string cmd_command = "dir " + location + " " + "/b /a-d " + ">" + location + "current.txt";
         system(cmd_command.c_str());
         string location_current = location + "current.txt";
         string str_deliver, read_location;
         file_read.open(location_current, ios::in);
-        while (file_read.peek() != EOF) //¶ÁÈ¡Êı¾İ¿âÄÚËùÓĞµ¥´Ê·ÖÇøµÄÎÄ¼şÃû
+        while (file_read.peek() != EOF) //è¯»å–æ•°æ®åº“å†…æ‰€æœ‰å•è¯åˆ†åŒºçš„æ–‡ä»¶å
         {
             getline(file_read, str_deliver);
             str_file.push_back(str_deliver);
@@ -462,9 +457,9 @@ bool CBasicDataIntro::CfValid(const string str,string location,const int code)
         str_file.erase(it);
         it=find(str_file.begin(),str_file.end(),"current.txt");
         str_file.erase(it);
-        for (int k = 0; k < str_file.size(); k++) //¶ÁÈ¡Êı¾İ¿âÄÚËùÓĞµ¥´Ê
+        for (int k = 0; k < str_file.size(); k++) //è¯»å–æ•°æ®åº“å†…æ‰€æœ‰å•è¯
         {
-           // cout<<str_file[k]<<endl;//debug ´òÓ¡Êı¾İ¿âÄÚËùÓĞÊı¾İÎÄ¼ş(µ¥´Ê·ÖÇø)Ãû³Æ
+           // cout<<str_file[k]<<endl;//debug æ‰“å°æ•°æ®åº“å†…æ‰€æœ‰æ•°æ®æ–‡ä»¶(å•è¯åˆ†åŒº)åç§°
             read_location = location + str_file[k];
             file_read.open(read_location, ios::in);
             while (file_read.peek() != EOF)
@@ -476,29 +471,46 @@ bool CBasicDataIntro::CfValid(const string str,string location,const int code)
             file_read.close();
         }
         /*
-        for(int k=0;k<str_file.size();k++)//´òÓ¡ÒÑÓĞÎÄ¼şÃû
+        for(int k=0;k<str_file.size();k++)//æ‰“å°å·²æœ‰æ–‡ä»¶å
         {
             cout<<k<<endl;
             cout<<str_file[k]<<endl;
             system("pause");
         }
-        for(int k=0;k<str_stored.size();k++)//debug  ´òÓ¡ÒÑÓĞµÄµ¥´Ê
+        for(int k=0;k<str_stored.size();k++)//debug  æ‰“å°å·²æœ‰çš„å•è¯
         {
             cout<<"owned:"<<endl<<str_stored[k]<<endl;
         }
         */
     }
-    cout<<"Ñ°ÕÒµ¥´Ê:"<<endl<<str<<endl;
-    if (find(str_stored.begin(), str_stored.end(), str) != str_stored.end()//Èç¹û·¢ÏÖÊı¾İ¿âÖĞÒÑ¾­´æÔÚĞÂÌíµÄµ¥´Ê
+    cout<<"å¯»æ‰¾å•è¯:"<<endl<<str<<endl;
+    if (find(str_stored.begin(), str_stored.end(), str) != str_stored.end()//å¦‚æœå‘ç°æ•°æ®åº“ä¸­å·²ç»å­˜åœ¨æ–°æ·»çš„å•è¯
     ||
-    find(str_introduced.begin(),str_introduced.end(),str)!=str_introduced.end()) //Èç¹û·¢ÏÖ±¾´ÎÒıÈëÖĞ´æÔÚÖØ¸´ÒıÈëµ¥´Ê
+    find(str_introduced.begin(),str_introduced.end(),str)!=str_introduced.end()) //å¦‚æœå‘ç°æœ¬æ¬¡å¼•å…¥ä¸­å­˜åœ¨é‡å¤å¼•å…¥å•è¯
     {
         cout<<"false"<<endl;
-        return false; //·ÅÆúÌí¼Óµ¥´ÊÖ¸Ê¾
+        return false; //æ”¾å¼ƒæ·»åŠ å•è¯æŒ‡ç¤º
     }
     else
     {
         cout<<"true"<<endl;
-        return true;//Ìí¼Óµ¥´ÊÖ¸Ê¾
+        return true;//æ·»åŠ å•è¯æŒ‡ç¤º
     }
+}
+
+string CBasicDataIntro::RmNull(string str)
+{
+    string str_modified;
+    for(int k=0;k<str.size();k++)
+    {
+        if((int)str[k]==32)//å¦‚æœé‡åˆ°ç©ºæ ¼ é‚£ä¹ˆå»é™¤ç©ºæ ¼å’Œç©ºæ ¼åçš„æ‰€æœ‰å†…å®¹
+        {
+            for(int i=0;i<k;i++)
+            {
+                str_modified+=str[i];
+            }
+            return str_modified;
+        }
+    }
+    return str;
 }

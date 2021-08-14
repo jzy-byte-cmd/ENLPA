@@ -1,17 +1,17 @@
 #include "standard.h"
 #include "dataconfirm.h"
 
-class Control//³ÌĞò¿ØÖÆÀà
+class Control//ç¨‹åºæ§åˆ¶ç±»
 {
     public:
-    void ENLPA_introduction()//ÔİÊ±Ã»ÓĞĞ´
+    void ENLPA_introduction()//æš‚æ—¶æ²¡æœ‰å†™
     {
         return;
     }
-    //ENLPA¿ª³¡¼°Æä½éÉÜ
+    //ENLPAå¼€åœºåŠå…¶ä»‹ç»
 
     void option();
-    //Õ¹Ê¾¿ÉÓÃ¹¦ÄÜ,²¢Ñ¡Ôñ
+    //å±•ç¤ºå¯ç”¨åŠŸèƒ½,å¹¶é€‰æ‹©
 
 
 };

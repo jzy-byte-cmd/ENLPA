@@ -87,7 +87,7 @@ void dataconfirm::print()//打印可疑字符串
         cout<<"无可疑字符串."<<endl;
     }
     cout<<endl<<"所有的可疑字符串及其位置将会被打印到bad_char.txt内"<<endl;
-    write_file.open("bad_char.txt",ios::app|ios::out);
+    write_file.open("bad_char.txt",ios::trunc|ios::out);
     for(int k=0;k<str_unvalid.size();k++)
     {
         write_file<<str_unvalid[k]<<endl<<str_unvalid_location[k]<<endl;

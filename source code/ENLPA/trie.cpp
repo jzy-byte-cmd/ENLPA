@@ -1,123 +1,42 @@
 #include "trie.h"
 
-//---------tree
+extern vector<string> words_of_tree;
 
-void tree::insert_word(string word)
+
+void get_words()
 {
-    node location;
-    location=this->check_node(trie_tree,0,word);
-    if(location.get_code()==0)//如果状态码为0,需要创建新分支
+    string Exe_location=_pgmptr,db_location,reading_file,
+    reading_file_location,context;
+    fstream read_list,read_file;
+    for(int k=0;k<9;k++)//因为此程序固定名称为ENLPA.exe 这个字符串长为9,那么抹去9个元素得到工作目录
     {
-        insert_character(location,word);
+        Exe_location.erase(Exe_location.end()-1);
     }
-    return;
-}
-
-void tree::insert_character(node current,const string word)
-{
-    if(current.get_size()!=word.size())//表明word还未被完整加入
+    db_location=Exe_location+"data\\DataBase\\";//数据库路径
+    read_list.open("list.txt",ios::in);
+    while(read_list.peek()!=EOF)//循环直到list.txt文件读完
     {
-        node next;
-        next.set_size(current.get_size()+1);
-        next.set_character(word[current.get_size()]);
-        current.set_next_node(next);
-        insert_character(next,word);//递归直到word被完全插入
-    }
-    return;
-}
-
-//这段代码可能(大概率,因为找不到合适的词)用注释无法解释清楚,有疑惑可以和我聊   --金哲宇
-//我会对这个trie树专门画图解释
-node tree::check_node(node node_current,int now,const string word)//important and the hardest
-{
-    for(int k=0;k<node_current.get_next_node_amount();k++)
-    {
-        if (word[now] == (node_current.get_next_node(k)).get_character()) //表明找到包含该字符的节点
+        getline(read_list,reading_file);
+        if(reading_file!="last_location.txt")
         {
-            if (now == word.size()-1) //表明已检查了word的最后一个字符,word在子串中被发现,那么放弃添加节点
+        reading_file_location=db_location+reading_file;
+        read_file.open(reading_file_location,ios::in);
+        while(read_file.peek()!=EOF)//循环直到数据库文件被读完//即2000行
+        {
+            getline(read_file,context);
+            for(int sm=0;sm<context.size();sm++)     
             {
-                node_current.set_code(1);//设置状态码
-                return node_current;
+                if((int)context[sm]>=65&&(int)context[sm]<=90)//表明是大写字母
+                {
+                    context[sm]=(char)((int)context[sm]+32);//转为小写
+                }
             }
-            now++;                                        //继续检查单词的下一个字符
-            node_current = node_current.get_next_node(k); //递归
-            this->check_node(node_current, now, word);    //递归直到找不到节点,或者遇到末尾节点
-            //此时node_current.get_next_node_amount()为0,for循环根本不会执行
+            words_of_tree.push_back(context);
+            context.clear();
+        }
+        read_file.close();
         }
     }
-    //跳出for循环说明分支节点没法匹配word的某个字符
-    //表明word不在子串中
-    return node_current;
-}
-
-void tree::initialization()
-{
-    trie_tree.set_size(0);
-    //设置根节点长度
-    trie_tree.set_character('#');
-    //设置根节点字符,只是起标识作用
+    read_list.close();
     return;
 }
-
-//tree end
-
-
-
-//-----------node
-
-
-int node::get_size()
-{
-    return size;
-}
-
-void node::set_size(const int length)
-{
-    size=length;
-    return;
-}
-
-char node::get_character()
-{
-    return character;
-}
-
-void node::set_character(const char context)
-{
-    character=context;
-    return;
-}
-
-vector<node> node::get_next_node()
-{
-    return next_node;
-}
-
-int node::get_next_node_amount()
-{
-    return next_node.size();
-}
-
-void node::set_next_node(const node next)
-{
-    next_node.push_back(next);
-    return;
-}
-
-node node::get_next_node(int num)
-{
-return next_node[num];
-}
-
-void node::set_code(const int status)
-{
-    code=status;
-    return;
-}
-
-int node::get_code()
-{
-    return code;
-}
-
-//node end

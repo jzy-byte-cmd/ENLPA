@@ -1,14 +1,1 @@
-CET4+6_edited.txt
-CET4_edited.txt
-CET6_edited.txt
-COCA_20000.txt
-COCA_abridged.txt
-GRE_8000_Words.txt
-GRE_abridged.txt
-GRE_delete_CET4+6+TOEFL.txt
-Highschool_edited.txt
-NPEE_Wordlist.txt
-OALD8_abridged_edited.txt
-SUM_of_cet4+6+toefl+gre.txt
-六级词汇表.txt
-红宝书 GRE词汇精选.txt
+1.txt

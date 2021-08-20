@@ -1,5 +1,4 @@
 //ENLPA.exe
-#include "standard.h"
 #include "control.h"
 
 int main()

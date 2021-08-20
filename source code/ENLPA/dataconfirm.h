@@ -15,6 +15,7 @@ bool DataCheck(const string str);
 void print();
 //打印可疑的问题字符串和其位置,供人工检查
 
+
     private:
 vector<string> str_unvalid_location;
 //储存可能不合法字符串的位置的变量

@@ -93,5 +93,7 @@ void dataconfirm::print()//打印可疑字符串
         write_file<<str_unvalid[k]<<endl<<str_unvalid_location[k]<<endl;
     }
     write_file.close();
+    str_unvalid.clear();
+    str_unvalid_location.clear();
     return;
 }

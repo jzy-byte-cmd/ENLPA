@@ -9,8 +9,8 @@ void read();
 //读取文本
 
 
-void MM(DicTree &trie);
-//MM 算法 mm 
+void MMP(DicTree &trie);
+//MM 算法 mm  改 0825
 
 void answer();
 

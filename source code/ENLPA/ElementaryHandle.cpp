@@ -1,7 +1,7 @@
 #include "ElementaryHandle.h"
 
 
-void elementaryhandle::MM(DicTree &trie)
+void elementaryhandle::MMP(DicTree &trie)
 {
     string big;
     int error=0;
@@ -21,7 +21,8 @@ void elementaryhandle::MM(DicTree &trie)
             }
             //cout<<find<<endl;
            // system("pause");
-           if(find.compare(",")==0||find.compare(".")==0||find.compare(";")==0)
+           if(find.compare(",")==0||find.compare(".")==0||find.compare(";")==0||
+           find.compare("'")==0||find.compare("?")==0||find.compare("!")==0||find.compare("\"")==0)
            {
                cut.push_back(find);
                find="";
@@ -51,6 +52,7 @@ void elementaryhandle::MM(DicTree &trie)
             }
             else
             {
+                cut.push_back(big);//最小匹配原则
                 error=0;
             }
            }
@@ -74,12 +76,12 @@ void elementaryhandle::answer()
     for(int k=0;k<cut.size();k++)
     {
         writer<<cut[k];
-        if(cut[k].compare(",")!=0&&cut[k].compare(";")!=0&&cut[k].compare(".")!=0)
+        if(cut[k].compare(",")!=0&&cut[k].compare(";")!=0&&cut[k].compare(".")!=0&&cut[k].compare("'")!=0&&cut[k].compare("?")!=0)
         {
             if(k!=cut.size()-1)
             {
                 cout<<cut[k]<<endl;
-                if(cut[k+1].compare(",")!=0&&cut[k+1].compare(";")!=0&&cut[k+1].compare(".")!=0)
+                if(cut[k+1].compare(",")!=0&&cut[k+1].compare(";")!=0&&cut[k+1].compare(".")!=0&&cut[k].compare("'")!=0&&cut[k].compare("?")!=0)
                 {
                     writer<<" ";
                 }
@@ -97,6 +99,10 @@ void elementaryhandle::read()
     fstream read_file;
     string context,A_sentence;
     read_file.open("test.txt",ios::in);
+    if(read_file.fail())
+    {
+        read_file.open("test.docx",ios::in);
+    }
     while(read_file.peek()!=EOF)
     {
         getline(read_file,context);

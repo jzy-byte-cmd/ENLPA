@@ -77,7 +77,7 @@ void Control::option()
         break;
         case 53:
         gaven.read();
-        gaven.MM(trie);
+        gaven.MMP(trie);
         gaven.answer();
         break;
     default:

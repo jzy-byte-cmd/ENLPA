@@ -1,4 +1,14 @@
+She's
+1.txt  58
+isn't
+1.txt  72
+won't
+1.txt  115
+I'm
+1.txt  139
+It's
+1.txt  161
 1
 last_location.txt  1
-9
+169
 last_location.txt  2

@@ -3,7 +3,8 @@
 
 void elementaryhandle::MMP(DicTree &trie)
 {
-    string big;
+    string big,find_copy,big_copy;
+    bool OK=false;
     int error=0;
     string find;
     for(int k=0;k<target_sentence.size();k++)
@@ -32,6 +33,32 @@ void elementaryhandle::MMP(DicTree &trie)
            {
             if(trie.Search(find)==false)
             {
+                for(int g=1;g<find.size();g++)
+                {
+                    for(int n=g;n<find.size();n++)
+                    {
+                        find_copy+=find[n];
+                        big_copy+=big[n];
+                    }
+                    if(trie.Search(find_copy)==true)
+                    {
+                        string find_another;
+                        for(int o=0;o<g;o++)
+                        {
+                            find_another+=big[o];
+                        }
+                        cut.push_back(find_another);
+                        cout<<"find_another:"<<endl;
+                        cout<<find_another<<endl;
+                        system("pause");
+                        find=find_copy;
+                        big=big_copy;
+                        OK=true;
+                        break;
+                    }
+                }
+                if(OK==false)
+                {
                 find.pop_back();
                 big.pop_back();
                 //cout<<"putin:"<<endl<<find<<endl;
@@ -40,20 +67,13 @@ void elementaryhandle::MMP(DicTree &trie)
                 find = "";
                 big="";
                 l--;
-                error++;
-                if (error == 10)
-                {
-                    cout << "无法找到" << endl
-                         << find << endl;
-                    cout << "退出..." << endl
-                         << endl;
-                    return;
+                cout << "无法找到" << endl
+                     << find << endl;
+                system("pause");
                 }
-            }
-            else
-            {
-                cut.push_back(big);//最小匹配原则
-                error=0;
+                OK=false;
+                find_copy.clear();
+                big_copy.clear();
             }
            }
         }
@@ -99,10 +119,6 @@ void elementaryhandle::read()
     fstream read_file;
     string context,A_sentence;
     read_file.open("test.txt",ios::in);
-    if(read_file.fail())
-    {
-        read_file.open("test.docx",ios::in);
-    }
     while(read_file.peek()!=EOF)
     {
         getline(read_file,context);

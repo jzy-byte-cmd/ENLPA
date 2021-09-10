@@ -12,6 +12,9 @@ void read();
 void MMP(DicTree &trie);
 //MM 算法 mm  改 0825
 
+void MM(DicTree &trie);
+//传统MM算法
+
 void answer();
 
 private:

@@ -4,13 +4,13 @@
 struct Node
 {
     bool isWord;//判断当前字母是否为单词的最后一个字母标识
-    Node *next[50];//26叉  改为100
+    Node *next[50];//26叉  改为50
     Node()
     {
         isWord = false;
         for(int i = 0;i != 50; ++ i)
         {
-            next[i] = NULL;//清空26叉  改为100
+            next[i] = NULL;//清空26叉  改为50
         }
     }
 };

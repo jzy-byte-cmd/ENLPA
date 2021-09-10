@@ -1,14 +1,28 @@
-She's
-1.txt  59
-isn't
-1.txt  73
-won't
-1.txt  116
-I'm
-1.txt  140
-It's
-1.txt  162
+(OCT)
+1.txt  7
+2D
+1.txt  85
+912
+1.txt  91
+23
+1.txt  156
+(also
+1.txt  163
+validation)
+1.txt  168
+45
+1.txt  171
+35
+1.txt  179
+26
+1.txt  182
+(MSE)
+1.txt  205
+(in
+1.txt  220
+pixel)
+1.txt  221
 1
 last_location.txt  1
-169
+231
 last_location.txt  2

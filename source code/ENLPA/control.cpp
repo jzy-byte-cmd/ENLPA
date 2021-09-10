@@ -5,6 +5,12 @@ vector<string> words_of_tree;
 
 void Control::option()
 {
+    double time=0;  
+    double counts=0;  
+    LARGE_INTEGER nFreq;  
+    LARGE_INTEGER nBeginTime;  
+    LARGE_INTEGER nEndTime;  
+    QueryPerformanceFrequency(&nFreq);  
     DicTree trie;
     elementaryhandle gaven;
     string consult;
@@ -24,7 +30,8 @@ void Control::option()
              << "2.数据检查" << endl
              << "3.构建字典树" << endl
              << "4.查询单词是否在库中" << endl
-             <<"5.ENLP(英文分词)"<<endl
+             <<"5.ENLP(英文分词)[trie] MMP"<<endl
+             <<"6.ENLP(英文分词)[trie] MM"<<endl
              << "0.退出" << endl; //后续可以添加
         cout << "请选择功能..." << endl;
         int choose = _getch();
@@ -75,10 +82,23 @@ void Control::option()
         }
         consult.clear();
         break;
-        case 53:
+        case 53://5
+        QueryPerformanceCounter(&nBeginTime);
         gaven.read();
         gaven.MMP(trie);
         gaven.answer();
+        QueryPerformanceCounter(&nEndTime);//停止计时  
+        time=(double)(nEndTime.QuadPart-nBeginTime.QuadPart)/(double)nFreq.QuadPart;//计算程序执行时间单位为s  
+        cout<<"程序5执行时间："<<time*1000<<"ms"<<endl;  
+        break;
+        case 54://6
+        QueryPerformanceCounter(&nBeginTime);
+        gaven.read();
+        gaven.MM(trie);
+        gaven.answer();
+        QueryPerformanceCounter(&nEndTime);//停止计时  
+        time=(double)(nEndTime.QuadPart-nBeginTime.QuadPart)/(double)nFreq.QuadPart;//计算程序执行时间单位为s  
+        cout<<"程序6执行时间："<<time*1000<<"ms"<<endl;  
         break;
     default:
         cout << "请输入正确的序号..." << endl<<endl<<endl;
